@@ -1,38 +1,44 @@
 <div class="download-dialog-container download-dialog" id="download-dialog-<%= model.id %>">
 
-	<div class="download-dialog-launcher">
-		<div class="icon"></div>
-		<a class="label launcher-button" href="javascript:{}">Download Data...</a>
-	</div>
+	<div class="download-dialog-inner">
 
-	<div class="download-dialog-body" style="display: none;">
-
-		<div class="select-data section">
-			<div class="section-label">Data: </div>
-			<div class="section-body">
-				<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
-				<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
-				<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
-				<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
-			</div>
+		<div class="download-dialog-launcher">
+			<div class="launcher-button">
+				<div class="icon"></div>
+				<a class="label" href="javascript:{}">Download Data...</a>
+			</div>	
 		</div>
 
-		<div class="select-download-option section">
-			<div class="section-label">Download as: </div>
-			<div class="section-body">
-				<% _.each(model.download_options, function(download_option,index) { %>
-				<div class="download-option download-option-id-<%= download_option.id %>">
-					<a class="linkrow" href="foo">
-						<div class="label"><%=download_option.label%> </div>
-						<div class="fileicon <%=download_option.mimetype %>"></div>
-					</a>
+		<div class="download-dialog-body" style="display: visible;">
+
+			<div class="select-data section">
+				<div class="section-label">Data: </div>
+				<div class="section-body">
+					<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
+					<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
+					<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
+					<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
 				</div>
-				<% }); %>
 			</div>
-		</div>
 
-		<div class="close-button">
-			<div class="icon"></div>
+			<div class="select-download-option section">
+				<div class="section-label">Download as: </div>
+				<div class="section-body">
+					<% _.each(model.download_options, function(download_option,index) { %>
+					<div class="download-option download-option-id-<%= download_option.id %>">
+						<a class="linkrow" href="foo">
+							<div class="fileicon <%=download_option.mimetype %>"></div>
+							<div class="label"><%=download_option.label%> </div>
+						</a>
+					</div>
+					<% }); %>
+				</div>
+			</div>
+
+			<div class="close-button">
+				<div class="icon"></div>
+			</div>
+
 		</div>
 
 	</div>

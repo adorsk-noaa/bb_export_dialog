@@ -58,10 +58,17 @@
   border-bottom-left-radius: 0;
   }
 
+
 .download-dialog-container{
-  .rounded_corners(7px);
-  border: thin solid black;
-  padding: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	.rounded_corners(7px);
+	border: thin solid #bcf;
+	background-color: #bcf;
+
+	.download-dialog-inner{
+		background-color: white;
+	}
   }
 
 .download-dialog{
@@ -74,27 +81,40 @@
 	}
 
 	.download-dialog-launcher {
-		display: table;
 
-		.icon {
-			background: url('images/icons/icons_32/down_arrow.png') no-repeat;
-		}
+		background-color: #bcf;
+		padding: 5px 0px 5px 0px;
 
-		.label {
-			padding-left: 10px;
-			display: table-cell;
-			vertical-align: middle;
+		.launcher-button {
+			cursor: pointer;
+			position: relative;
+			.icon {
+				background: url('images/icons/icons_32/down_arrow.png') no-repeat;
+				position: absolute;
+				left: 10px;
+			}
+
+			.label {
+				padding-left: 50px;
+				display: table-cell;
+				vertical-align: middle;
+				height: 32px;
+			}
 		}
 
 	}
 
 	.download-dialog-body{
+		padding: 5px 0px 5px 50px;
+		border-top: 10px solid #e3e9ff;
+
 		overflow: hidden;
 
 		.section{
-
-			margin-left: 5px;
+			margin-right: 80px;
 			margin-top: 10px;
+
+			overflow: auto;
 
 			.section-label{
 				font-size: 85%;
@@ -103,12 +123,14 @@
 
 			.section-body{
 				margin-left: 5px;
+				padding: 5px;
 			}
 
 		}
 
 		.close-button {
 			float: right;
+			margin-right: 15px;
 			.icon { background: url('images/icons/icons_32/x.png') no-repeat; }
 
 		}
@@ -116,11 +138,18 @@
 
 	.download-option {
 
+
 		.linkrow{
+			.rounded_corners;
+			padding: 3px;
 			display: block;
+			background-color: #e3e9ff;
+			border: thin solid #bcf;
+			text-decoration: none;
 
 			&:hover{
-				background-color: #cccccc;
+				background-color: #bcf;
+
 			}
 
 			.label, .fileicon {
@@ -129,7 +158,7 @@
 			}
 
 			.label{
-				padding-right: 15px;
+				padding-left: 15px;
 			}
 		}
 	}

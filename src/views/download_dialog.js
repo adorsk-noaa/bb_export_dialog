@@ -11,11 +11,12 @@ function($, Backbone, _, _s, dd_template){
 
 		events: {
 			"click .download-dialog-launcher .launcher-button": 'onLauncherButtonClick',
-			"click .download-dialog-body .close-button": 'onCloseButtonClick',
+			"click .download-dialog-body .close-button": 'deactivate',
 			'change input[name="restrict-data"]': 'onRestrictionChange',
 		},
 
 		initialize: function(){
+			this.active = false;
 			this.render();
 			this.updateDownloadOptionLinks();
 			this.model.on('change:restricted change:restrictions', this.updateDownloadOptionLinks, this);
@@ -36,13 +37,28 @@ function($, Backbone, _, _s, dd_template){
 		},
 	
 		onLauncherButtonClick: function(){
-			console.log('launcher click');
-			$('.download-dialog-body', this.el).slideDown(200);
+			if (this.active){
+				this.deactivate();
+			}
+			else{
+				this.activate()
+			}
 		},
 
-		onCloseButtonClick: function(){
-			console.log('close button click');
-			$('.download-dialog-body', this.el).slideUp(200);
+		activate: function(){
+			var _this = this;
+			$('.download-dialog-body', this.el).slideDown(200, function(){
+				$('.download-dialog', _this.el).addClass('active');
+				_this.active = true;
+			});
+		},
+
+		deactivate: function(){
+			var _this = this;
+			$('.download-dialog-body', this.el).slideUp(200,function(){
+				$('.download-dialog', _this.el).removeClass('active');
+				_this.active = false;
+			});
 		},
 
 		onRestrictionChange: function(){
