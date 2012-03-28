@@ -37,11 +37,8 @@ function($, Backbone, _, _s, dd_template){
 		},
 	
 		onLauncherButtonClick: function(){
-			if (this.active){
-				this.deactivate();
-			}
-			else{
-				this.activate()
+			if (! this.active){
+				this.activate();
 			}
 		},
 
