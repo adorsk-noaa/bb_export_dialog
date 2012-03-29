@@ -10,7 +10,8 @@ var DownloadDialogModel = dialogs_models.DialogModel.extend({
 
 	defaults: _.extend({}, dialogs_models.DialogModel.prototype.defaults,{
 		title: 'Download Data',
-		parameters: {},
+		restrictions: {},
+		restricted: true,
 		download_options: {}
 	}),
 

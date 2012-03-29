@@ -36,8 +36,8 @@ function($, Backbone, _, _s, dialogs_views, body_template){
 
 		updateDownloadOptionLinks: function(){
 			_.each(this.model.get('download_options'), function(download_option){
-				var link_selector = _s.sprintf(".download-option-id-%s > .link > a", download_option['id']);
-				link_el = $(link_selector, this.el)[0];
+				var link_selector = _s.sprintf(".download-option-id-%s a.linkrow", download_option['id']);
+				link_el = $(link_selector, this.el);
 				$(link_el).attr('href', download_option.url.call(this.model));
 			}, this);
 		},
