@@ -15,9 +15,9 @@ function($, Backbone, _, _s, dialogs_views, body_template){
 		},
 
 		initialize: function(){
-			console.log(this.model);
 			dialogs_views.ModalDialogView.prototype.initialize.call(this, arguments);
-			$('.dialog-container', this.el).addClass('download-dialog');
+			$(this.el).addClass('download-dialog');
+
 			this.updateDownloadOptionLinks();
 			this.model.on('change:restricted change:restrictions', this.updateDownloadOptionLinks, this);
 		},
