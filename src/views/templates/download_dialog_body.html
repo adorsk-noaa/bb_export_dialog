@@ -1,24 +1,26 @@
-<div class="select-data section">
-	<div class="section-label">Data: </div>
-	<div class="section-body">
-		<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
-		<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
-		<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
-		<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
-	</div>
-</div>
-
-<div class="select-download-option section">
-	<div class="section-label">Download as: </div>
-	<div class="section-body">
-		<% _.each(model.download_options, function(download_option,index) { %>
-		<div class="download-option download-option-id-<%= download_option.id %>">
-			<a class="linkrow" href="foo">
-				<div class="fileicon <%=download_option.mimetype %>"></div>
-				<div class="label"><%=download_option.label%> </div>
-			</a>
+<div class="body-inner">
+	<div class="select-data section">
+		<div class="section-label">Data</div>
+		<div class="section-body">
+			<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
+			<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
+			<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
+			<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
 		</div>
-		<% }); %>
+	</div>
+
+	<div class="select-download-option section">
+		<div class="section-label">Download as</div>
+		<div class="section-body">
+			<% _.each(model.download_options, function(download_option,index) { %>
+			<div class="download-option download-option-id-<%= download_option.id %>">
+				<a class="linkrow" href="foo">
+					<div class="fileicon <%=download_option.mimetype %>"></div>
+					<div class="label"><%=download_option.label%> </div>
+				</a>
+			</div>
+			<% }); %>
+		</div>
 	</div>
 </div>
 
