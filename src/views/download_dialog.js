@@ -3,28 +3,34 @@ define([
 	"use!backbone",
 	"use!underscore",
 	"_s",
-	"text!./templates/download_dialog.html",
+	"dialogs/views/main",
+	"text!./templates/download_dialog_body.html",
 		],
-function($, Backbone, _, _s, dd_template){
+function($, Backbone, _, _s, dialogs_views, body_template){
 
-	var DownloadDialogView = Backbone.View.extend({
+	var DownloadDialogView = dialogs_views.ModalDialogView.extend({
 
 		events: {
-			"click .download-dialog-launcher .launcher-button": 'onLauncherButtonClick',
-			"click .download-dialog-body .close-button": 'deactivate',
-			'change input[name="restrict-data"]': 'onRestrictionChange',
+			'click .dialog-footer .close-button': 'hide'
 		},
 
 		initialize: function(){
-			this.active = false;
-			this.render();
+			console.log(this.model);
+			dialogs_views.ModalDialogView.prototype.initialize.call(this, arguments);
+			$('.dialog-container', this.el).addClass('download-dialog');
 			this.updateDownloadOptionLinks();
 			this.model.on('change:restricted change:restrictions', this.updateDownloadOptionLinks, this);
 		},
 
-		render: function(){
-			var view_html = _.template(dd_template, {model: this.model.toJSON()});
-			$(this.el).html(view_html);
+		renderDialogBody: function(){
+			var body_html = _.template(body_template, {model: this.model.toJSON()});
+			$('.dialog-body', this.el).html(body_html);
+			return this;
+		},
+
+		renderDialogFooter: function(){
+			var footer_html = '<button class="close-button button">Cancel</button>';
+			$('.dialog-footer', this.el).html(footer_html);
 			return this;
 		},
 
@@ -34,28 +40,6 @@ function($, Backbone, _, _s, dd_template){
 				link_el = $(link_selector, this.el)[0];
 				$(link_el).attr('href', download_option.url.call(this.model));
 			}, this);
-		},
-	
-		onLauncherButtonClick: function(){
-			if (! this.active){
-				this.activate();
-			}
-		},
-
-		activate: function(){
-			var _this = this;
-			$('.download-dialog-body', this.el).slideDown(200, function(){
-				$('.download-dialog', _this.el).addClass('active');
-				_this.active = true;
-			});
-		},
-
-		deactivate: function(){
-			var _this = this;
-			$('.download-dialog-body', this.el).slideUp(200,function(){
-				$('.download-dialog', _this.el).removeClass('active');
-				_this.active = false;
-			});
 		},
 
 		onRestrictionChange: function(){

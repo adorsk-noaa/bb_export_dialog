@@ -1,19 +1,24 @@
 define([
 	"use!backbone",
+	"use!underscore",
+	"dialogs/models/main"
 ], 
-function(Backbone){
+function(Backbone, _, dialogs_models){
 
-var DownloadDialogModel = Backbone.Model.extend({
+var DownloadDialogModel = dialogs_models.DialogModel.extend({
 
-	defaults: {
+
+	defaults: _.extend({}, dialogs_models.DialogModel.prototype.defaults,{
+		title: 'Download Data',
 		parameters: {},
 		download_options: {}
-	},
+	}),
 
 	initialize: function(){
 	}
 
 });
+
 return DownloadDialogModel;
 
 });
