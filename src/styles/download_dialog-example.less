@@ -9,7 +9,6 @@
 			border: thin solid #bcf;
 
 			.section{
-				overflow: auto;
 				margin-bottom: 1em;
 
 				.section-label{
@@ -20,8 +19,15 @@
 				.section-body{
 					padding: 5px;
 					border: thin solid #bcf;
+					overflow: auto;
 				}
 
+			}
+
+			.section.select-download-option{
+				.section-body{
+					max-height: 400px;
+				}
 			}
 		}
 
