@@ -19,7 +19,7 @@
 			<% _.each(model.download_options, function(download_option,index) { %>
 			<div class="download-option download-option-id-<%= download_option.id %>">
 				<a class="linkrow" href="" target="_blank">
-					<div class="fileicon <%=download_option.mimetype %>"></div>
+					<div class="icon"><%=download_option.filetype %></div>
 					<div class="label"><%=download_option.label%> </div>
 				</a>
 			</div>
