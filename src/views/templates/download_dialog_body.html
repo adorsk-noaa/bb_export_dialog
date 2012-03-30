@@ -2,10 +2,14 @@
 	<div class="select-data section">
 		<div class="section-label">Data</div>
 		<div class="section-body">
-			<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
-			<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
-			<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
-			<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
+			<div>
+				<input name="restrict-data" type="radio" checked="true" id="download-dialog-<%= model.id %>-restricted" value="restricted"> 
+				<label for="download-dialog-<%= model.id %>-restricted" >currently selected data</label>
+			</div>
+			<div>
+				<input name="restrict-data" type="radio" id="download-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
+				<label for="download-dialog-<%= model.id %>-unrestricted">all data</label>
+			</div>
 		</div>
 	</div>
 
@@ -14,7 +18,7 @@
 		<div class="section-body">
 			<% _.each(model.download_options, function(download_option,index) { %>
 			<div class="download-option download-option-id-<%= download_option.id %>">
-				<a class="linkrow" href="">
+				<a class="linkrow" href="" target="_blank">
 					<div class="fileicon <%=download_option.mimetype %>"></div>
 					<div class="label"><%=download_option.label%> </div>
 				</a>
