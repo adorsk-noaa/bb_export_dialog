@@ -3,19 +3,19 @@ define([
 	"use!backbone",
 	"use!underscore",
 	"_s",
-	"dialogs/views/main",
+	"Dialogs",
 	"text!./templates/download_dialog_body.html",
 		],
-function($, Backbone, _, _s, dialogs_views, body_template){
+function($, Backbone, _, _s, Dialogs, body_template){
 
-	var DownloadDialogView = dialogs_views.ModalDialogView.extend({
+	var DownloadDialogView = Dialogs.views.ModalDialogView.extend({
 
 		events: {
 			'click .dialog-footer .close-button': 'hide'
 		},
 
 		initialize: function(){
-			dialogs_views.ModalDialogView.prototype.initialize.call(this, arguments);
+			Dialogs.views.ModalDialogView.prototype.initialize.call(this, arguments);
 			$(this.el).addClass('download-dialog');
 
 			this.updateDownloadOptionLinks();
