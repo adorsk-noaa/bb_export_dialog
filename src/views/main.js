@@ -1,10 +1,10 @@
 define([
-	"./download_dialog"
+	"./export_dialog"
 ], 
-function(DownloadDialogView){
+function(ExportDialogView){
 
 	views = {
-		'DownloadDialogView': DownloadDialogView
+		'ExportDialogView': ExportDialogView
 	};
 
 	return views;

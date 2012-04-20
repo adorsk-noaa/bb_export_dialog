@@ -1,0 +1,30 @@
+<div class="body-inner">
+	<div class="select-data section">
+		<div class="section-label">Data</div>
+		<div class="section-body">
+			<div>
+				<input name="restrict-data" type="radio" checked="true" id="export-dialog-<%= model.id %>-restricted" value="restricted"> 
+				<label for="export-dialog-<%= model.id %>-restricted" >currently selected data</label>
+			</div>
+			<div>
+				<input name="restrict-data" type="radio" id="export-dialog-<%= model.id %>-unrestricted" value="unrestricted"> 
+				<label for="export-dialog-<%= model.id %>-unrestricted">all data</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="select-export-option section">
+		<div class="section-label">Export as</div>
+		<div class="section-body">
+			<% _.each(model.export_options, function(export_option,index) { %>
+			<div class="export-option export-option-id-<%= export_option.id %>">
+				<a class="linkrow" href="" target="_blank">
+					<div class="icon"><%=export_option.filetype %></div>
+					<div class="label"><%=export_option.label%> </div>
+				</a>
+			</div>
+			<% }); %>
+		</div>
+	</div>
+</div>
+

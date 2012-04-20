@@ -4,11 +4,11 @@ define([
 	"use!underscore",
 	"_s",
 	"Dialogs",
-	"text!./templates/download_dialog_body.html",
+	"text!./templates/export_dialog_body.html",
 		],
 function($, Backbone, _, _s, Dialogs, body_template){
 
-	var DownloadDialogView = Dialogs.views.ModalDialogView.extend({
+	var ExportDialogView = Dialogs.views.ModalDialogView.extend({
 
 		events: {
 			'click .dialog-footer .close-button': 'hide'
@@ -16,10 +16,10 @@ function($, Backbone, _, _s, Dialogs, body_template){
 
 		initialize: function(){
 			Dialogs.views.ModalDialogView.prototype.initialize.call(this, arguments);
-			$(this.el).addClass('download-dialog');
+			$(this.el).addClass('export-dialog');
 
-			this.updateDownloadOptionLinks();
-			this.model.on('change:restricted change:restrictions', this.updateDownloadOptionLinks, this);
+			this.updateExportOptionLinks();
+			this.model.on('change:restricted change:restrictions', this.updateExportOptionLinks, this);
 		},
 
 		renderDialogBody: function(){
@@ -34,11 +34,11 @@ function($, Backbone, _, _s, Dialogs, body_template){
 			return this;
 		},
 
-		updateDownloadOptionLinks: function(){
-			_.each(this.model.get('download_options'), function(download_option){
-				var link_selector = _s.sprintf(".download-option-id-%s a.linkrow", download_option['id']);
+		updateExportOptionLinks: function(){
+			_.each(this.model.get('export_options'), function(export_option){
+				var link_selector = _s.sprintf(".export-option-id-%s a.linkrow", export_option['id']);
 				link_el = $(link_selector, this.el);
-				$(link_el).attr('href', download_option.url.call(this.model));
+				$(link_el).attr('href', export_option.url.call(this.model));
 			}, this);
 		},
 
@@ -49,6 +49,6 @@ function($, Backbone, _, _s, Dialogs, body_template){
 
 	});
 
-	return DownloadDialogView;
+	return ExportDialogView;
 });
 		

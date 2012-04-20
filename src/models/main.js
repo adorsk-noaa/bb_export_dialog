@@ -1,10 +1,10 @@
 define([
-	"./download_dialog"
+	"./export_dialog"
 ], 
-function(DownloadDialogModel){
+function(ExportDialogModel){
 
 	models = {
-		'DownloadDialogModel': DownloadDialogModel
+		'ExportDialogModel': ExportDialogModel
 	};
 
 	return models;
