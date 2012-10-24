@@ -1,6 +1,6 @@
 define([
-	"use!backbone",
-	"use!underscore",
+	"backbone",
+	"underscore",
 	"Dialogs"
 ], 
 function(Backbone, _, Dialogs){

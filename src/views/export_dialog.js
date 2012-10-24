@@ -1,7 +1,7 @@
 define([
 	"jquery",
-	"use!backbone",
-	"use!underscore",
+	"backbone",
+	"underscore",
 	"_s",
 	"Dialogs",
 	"text!./templates/export_dialog_body.html",
